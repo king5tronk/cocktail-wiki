@@ -1,0 +1,138 @@
+/* --- Base reset-ish --- */
+* { box-sizing: border-box; }
+html, body, #root { height: 100%; }
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
+  background: transparent;
+  color: #111;
+  line-height: 1.5;
+}
+img { display: block; max-width: 100%; }
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;            /* ← avstånd mellan länkarna */
+  padding: 12px 16px;
+}
+.header a {
+  text-decoration: none;
+  color: inherit;
+  padding: .45rem .75rem;   /* större klickyta */
+  border-radius: 8px;
+  border: 1px solid transparent;
+}
+.header a:hover { background: #f4f4f6; }
+
+.header nav {
+  display: flex; 
+  gap: 12px;
+}
+
+
+
+/* --- Layout utility: centrerar innehåll på sidan --- */
+.center-page {
+  min-height: calc(100dvh - 80px); /* lämnar plats om du har header */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 2rem 1rem;
+}
+
+/* --- Card: standardiserad look --- */
+.card {
+  width: 100%;
+  max-width: 800px;            /* justera till 720/960 efter smak */
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.06);
+  padding: 1.25rem;
+  display: grid;
+  gap: 1rem;
+  text-align: center;          /* centrerar all text i kortet */
+}
+
+/* Smalare variant om du vill för t.ex. landing */
+.card--narrow { max-width: 560px; }
+
+/* Bild överst, centrerad, fin beskärning */
+.card__img {
+  width: 100%;
+  max-width: 420px;
+  aspect-ratio: 1 / 1;         /* håller kvadratisk */
+  object-fit: cover;
+  border-radius: 12px;
+  margin: 0 auto;              /* centrera bilden */
+  box-shadow: 0 2px 10px rgba(0,0,0,.08);
+}
+
+/* Rubriker & meta */
+.card__title {
+  margin: .25rem 0 0;
+  font-size: clamp(1.4rem, 2.8vw, 2rem);
+  line-height: 1.2;
+}
+.card__subtitle {
+  margin: 0;
+  color: #555;
+}
+
+/* Meta-lista centrerad (dt/dd bredvid varandra i en rad) */
+.meta {
+  display: grid;
+  gap: 6px;
+}
+.meta > div {
+  display: inline-flex;
+  gap: .5rem;
+  justify-content: center;
+}
+.meta dt { font-weight: 600; color: #444; }
+.meta dd { margin: 0; color: #222; }
+
+/* Ingredients-lista centrerad */
+.list--centered {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 4px;
+  justify-items: center;       /* centrera varje li */
+}
+.list--centered li { color: #222; }
+
+/* Knappar */
+.btn {
+  appearance: none;
+  border: 1px solid #ddd;
+  background: #fff;
+  padding: .5rem .9rem;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.btn:hover { background: #f4f4f6; }
+.btn:disabled { opacity: .6; cursor: default; }
+.btn--primary {
+  border-color: #111;
+  background: #111;
+  color: #fff;
+}
+.btn--ghost {
+  background: transparent;
+}
+
+/* Små hjälpare för status/error */
+.status { padding: .5rem; }
+.alert {
+  border: 1px solid #f2c8c8;
+  background: #fff5f5;
+  color: #7a1e1e;
+  padding: .75rem;
+  border-radius: 8px;
+}
+
+

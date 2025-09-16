@@ -1,0 +1,56 @@
+/* ===== Floating drinks background ===== */
+.bg-floating {
+  position: fixed;
+  inset: 0;
+  z-index: 0;            /* Bakom allt */
+  pointer-events: none;  
+  overflow: hidden;
+}
+
+.drink {
+  position: absolute;
+  left: var(--x);
+  bottom: -12vh; /* startar lite under skärmen */
+  animation:
+    sway calc(var(--dur) * .6) ease-in-out infinite alternate;
+  animation-delay: calc(var(--delay) * .5);
+  will-change: transform;
+}
+
+.drink__i {
+  display: block;
+  font-size: var(--size);
+  transform: translateX(-50%);  /* centrera på sin x-position */
+  animation:
+    rise var(--dur) linear infinite;
+  animation-delay: var(--delay);
+  opacity: var(--o, .25);
+  filter: drop-shadow(0 6px 10px rgba(0,0,0,.15));
+  will-change: transform;
+}
+
+/* Emoji-innehåll */
+.drink__i::before {
+  content: attr(data-emoji);
+}
+
+/* Vertikal uppåt-rörelse + rotation i samma transform */
+@keyframes rise {
+  from { transform: translate(-50%, 0) rotate(0deg); }
+  to   { transform: translate(-50%, -115vh) rotate(360deg); }
+}
+
+@keyframes sway {
+  from { transform: translateX(-10px); }
+  to   { transform: translateX(10px); }
+}
+
+/* Respektera användare som inte vill ha rörelse */
+@media (prefers-reduced-motion: reduce) {
+  .bg-floating { display: none; }
+}
+
+header, main, footer {
+  position: relative;
+  z-index: 1;
+}
